@@ -26,8 +26,11 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <FormInput type="email" name="email" value={data.email} onChange={handleChange} required label="email" />
         <FormInput type="password" name="password" value={data.password} onChange={handleChange} required label="password" />
-        <CustomButton type="submit">Sign In</CustomButton>
-        <CustomButton type="button" onClick={signInWithGoogle}>Sign in with Google</CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">Sign In</CustomButton>
+          {/* we can just pass the props like isGoogleSignIn without any value it is equal to isGoogleSignIn={true} */}
+          <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</CustomButton>
+        </div>
       </form>
     </div>
   );
