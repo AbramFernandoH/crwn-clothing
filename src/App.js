@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Homepage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shop/shop.component';
 import { Routes, Route, useParams, useNavigate, Link } from 'react-router-dom';
 
 const HatsPage = ({barang}) => (
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/hats" element={<HatsPage barang="Baju" />} />
+        <Route path="shop" element={<ShopPage />} />
         <Route path="shop/hats" element={<HatsDetailPage />} />
       </Routes>
     </div>
