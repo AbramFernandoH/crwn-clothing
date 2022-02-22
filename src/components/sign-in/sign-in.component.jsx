@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 import './sign-in.styles.scss'
 
 const SignIn = () => {
@@ -13,9 +13,17 @@ const SignIn = () => {
     setData({ ...data, [name]: value })
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    setData({})
+
+    const { email, password } = data
+
+    try{
+      await auth.signInWithEmailAndPassword(email, password)
+      setData({})
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   return (
